@@ -13,7 +13,6 @@ export async function getNewThread() {
 }
 
 export async function getThread() {
-  console.log("GETTING THREAD");
   let thread = getStoredActiveThread();
 
   let isValidThreadId = false;
@@ -43,7 +42,6 @@ export async function getThread() {
     setThreads(threads);
   }
 
-  console.log("THREAD GOT");
   return thread;
 }
 

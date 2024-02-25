@@ -1,4 +1,4 @@
-import * as bidara from "../assistant/bidara";
+import * as assistant from "../assistant/assistant";
 
 import { getStoredAPIKey, getStoredAsstId, setStoredAPIKey, setStoredAsstId } from "./storageUtils";
 import { getThread } from "./threadUtils";
@@ -25,7 +25,7 @@ export async function validAssistant(id) {
     return false;
   }
 
-  if (r.hasOwnProperty('name') && r.name == "BIDARAv"+bidara.BIDARA_VERSION) {
+  if (r.hasOwnProperty('name') && r.name == "BIDARAv"+assistant.BIDARA_VERSION) {
     return true;
   }
   return false;
@@ -36,6 +36,9 @@ export async function updateAssistant(id) {
   if(!openaiKey) {
     throw new Error('openai key not set. cannot update assistant.');
   }
+  console.log(id);
+  console.log(openaiKey);
+  console.log(assistant.ASSISTANT_CONFIG);
   const response = await fetch("https://api.openai.com/v1/assistants/"+id, {
     method: "POST",
     headers: {
@@ -43,7 +46,7 @@ export async function updateAssistant(id) {
       'Content-Type': 'application/json',
       'OpenAI-Beta': 'assistants=v1'
     },
-    body: JSON.stringify(bidara.BIDARA_CONFIG)
+    body: JSON.stringify(assistant.ASSISTANT_CONFIG)
   });
   
   const r = await response.json();
@@ -78,7 +81,7 @@ export async function getBidaraAssistant() {
       // get version of assistant.
       let bidaraVersion = bidaraAsst.name.substring(7);
       // if assistant version is up to date, use it.
-      if (bidaraVersion == bidara.BIDARA_VERSION) {
+      if (bidaraVersion == assistant.BIDARA_VERSION) {
         return bidaraAsst.id;
       }
       else {

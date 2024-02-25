@@ -20,7 +20,6 @@
     .container {
         width: 2em;
         height: 2em;
-        margin-right: 4.5em;
     }
 
     .menu:hover {
@@ -35,12 +34,6 @@
 
     .open img {
         transform: rotate(180deg);
-    }
-
-    @media only screen and (max-width: 700px) {
-        .container {
-            margin-right: 0;
-        }
     }
 
 

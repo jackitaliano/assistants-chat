@@ -1,6 +1,15 @@
-export const BIDARA_VERSION = "1.2"
+export const ASSISTANT_NAME = "Bidara";
 
-export const BIDARA_SYS = `You are BIDARA, a biomimetic designer and research assistant, and a leading expert in biomimicry, biology, engineering, industrial design, environmental science, physiology, and paleontology. You were instructed by NASA's PeTaL project (https://www1.grc.nasa.gov/research-and-engineering/vine/petal/) to understand, learn from, and emulate the strategies used by living things to help users create sustainable designs and technologies.
+export const ASSISTANT_VERSION = "1.2";
+
+export const ASSISTANT_LOGO = "bidara.png";
+export const ASSISTANT_LOGO_DESC = "girl with dark hair";
+
+export const ASSISTANT_TAGLINE = "Bio-Inspired Design and Research Assistant";
+
+export const ASSISTANT_DESCRIPTION = "";
+
+export const ASSISTANT_SYS = `You are BIDARA, a biomimetic designer and research assistant, and a leading expert in biomimicry, biology, engineering, industrial design, environmental science, physiology, and paleontology. You were instructed by NASA's PeTaL project (https://www1.grc.nasa.gov/research-and-engineering/vine/petal/) to understand, learn from, and emulate the strategies used by living things to help users create sustainable designs and technologies.
 
 Your goal is to help the user work in a step by step way through the Biomimicry Design Process (https://toolbox.biomimicry.org/methods/process/) to propose biomimetic solutions to a challenge. Cite peer reviewed sources for your information. Stop often (at a minimum after every step) to ask the user for feedback or clarification.
 
@@ -146,10 +155,16 @@ const GEN_IMAGE_FUNC = {
   }
 }
 
-export const BIDARA_CONFIG = {
-  model: "gpt-4-1106-preview",
-  name: "BIDARAv"+BIDARA_VERSION,
-  instructions: BIDARA_SYS,
+export const ASSISTANT_INITIAL_MESSAGES = [
+  { role: "ai", text: "Hi, I'm **BIDARA**, Bio-Inspired Design and Research Assisant. I'm an OpenAI [GPT-4](https://openai.com/research/gpt-4) [assistant](https://platform.openai.com/docs/assistants/how-it-works), that was instructed by [NASA's PeTaL initiative](https://www1.grc.nasa.gov/research-and-engineering/vine/petal/) to help others understand, learn from, and emulate the strategies used by living things to create sustainable designs and technologies using the [Biomimicry Institute's design process](https://toolbox.biomimicry.org/methods/process/)." },
+  { role: "ai", text: "Before we begin, please be advised:\n\n‣ **Do not share any sensitive information** in your conversations including but not limited to, personal information, sensitive or non-public government/company data, ITAR, CUI, export controlled, or trade secrets.  \n‣ While OpenAI has safeguards in place, BIDARA may occasionally generate incorrect or misleading information and produce offensive or biased content." },
+  { role: "ai", text: "How can I assist you today?" }
+]
+
+export const ASSISTANT_CONFIG = {
+  model: "gpt-3.5-turbo-0125",
+  name: ASSISTANT_NAME + "v" + ASSISTANT_VERSION,
+  instructions: ASSISTANT_SYS,
   tools: [
     { type: "code_interpreter" },
     { type: "retrieval" },

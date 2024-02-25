@@ -2,15 +2,22 @@
 <script>
 	import MyDeepChat from './MyDeepChat.svelte';
 
+	import { ASSISTANT_LOGO, ASSISTANT_LOGO_DESC, ASSISTANT_NAME, ASSISTANT_TAGLINE} from '../assistant/assistant';
+
 	export let loginHandler;
+
+	let title = ASSISTANT_NAME;
+	let image = ASSISTANT_LOGO;
+	let image_alt = ASSISTANT_LOGO_DESC;
+	let tagline = ASSISTANT_TAGLINE;
 
 </script>
 
 <div id="welcome" class="w-full h-full">
 	<div id="header">
-		<img src="bidara.png" alt="girl with dark hair" height="57" width="57" />
-		<h2>BIDARA</h2><br/>
-		<span class="small">Bio-Inspired Design and Research Assistant</span>
+		<img src={image} alt={image_alt} height="57" width="57" />
+		<h2>{title}</h2><br/>
+		<span class="small">{tagline}</span>
 	</div>
 
 	<h3 class="text-lg font-bold mt-5 mb-5">How to access</h3>
@@ -25,7 +32,7 @@
 	</ol>
 	<ul class="list-disc mt-4">
 		<li>With OpenAI API you only pay for what you use. Track your usage and costs on the <a href="https://platform.openai.com/usage" class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">Usage page</a>.</li>
-		<li>After you send your first message to BIDARA, it will also be available to interact with through the <a href="https://platform.openai.com/assistants" class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">OpenAI Assistants Playground</a>. This interface is more complex, but also provides more customizability. Just select BIDARA, then click the 'Test' button.</li>
+		<li>After you send your first message to {ASSISTANT_NAME}, it will also be available to interact with through the <a href="https://platform.openai.com/assistants" class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">OpenAI Assistants Playground</a>. This interface is more complex, but also provides more customizability. Just select {ASSISTANT_NAME}, then click the 'Test' button.</li>
 	</ul>
 
 	<MyDeepChat

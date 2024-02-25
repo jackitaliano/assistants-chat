@@ -25,14 +25,14 @@
 	}
 
 	async function onNewMessage(message) { 
-		if (thread) {
-      console.log("update threads");
-			const len = this.getMessages().length;
+    const len = this.getMessages().length;
+    console
 
-      if (len !== thread.length) {
-        updateThread(thread);
-      }
-		}
+    const role = message.message.role;
+    if (role === "user" && len !== thread.length) {
+      thread.length = len;
+      updateThread(thread);
+    }
 	}
 
 	async function onComponentRender() {
@@ -45,11 +45,9 @@
 			loginHandler();
 		}
 
-		setTimeout(()=> loading = false, 200);
+		setTimeout(()=> loading = false, 400);
 	}
 
-  console.log("my deep chat")
-  console.dir(deepChatRef);
 </script>
 
 <deep-chat

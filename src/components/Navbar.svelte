@@ -9,7 +9,6 @@
     let editing_name = false;
     let editing_input;
 
-    console.log("nav render");
     if (!chat_name) {
       chat_name = "";
     }
