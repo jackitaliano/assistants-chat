@@ -2,6 +2,8 @@
 ## What it is
 Chat with your assistants, save their history, multiple chats. Run 100% in the browser.
 
+[Try it](https://jackitaliano.github.io/assistants-chat/)
+
 ## How to use
 1. Load your own OpenAI Assistant's config into `src/components/assistant/assistant.js` (and if needed adjust `assistantFunctions.js`)
 2. `npm ci`
@@ -15,6 +17,7 @@ Chat with your assistants, save their history, multiple chats. Run 100% in the b
 ## Credit
 - Heavily depends on [ovidijusparsiunas/deep-chat](https://github.com/ovidijusparsiunas/deep-chat)
 - Much of development done on/by [nasa-petal/bidara-deep-chat](https://github.com/nasa-petal/bidara-deep-chat)
+  - [Try Bidara](https://nasa-petal.github.io/bidara-deep-chat/)
 
 ## Screenshots
 
