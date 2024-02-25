@@ -6,7 +6,7 @@ export function getCurrentWeather(location) {
   } else if (location.includes('san francisco')) {
     return 'Mild';
   } else {
-    return 'Very Hot';
+    return 'Cold';
   }
 }
 
