@@ -1,4 +1,4 @@
-# assistants-chat
+# Assistants Chat
 ## What it is
 Chat with your assistants, save their history, multiple chats. Run 100% in the browser.
 
