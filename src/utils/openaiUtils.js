@@ -25,7 +25,7 @@ export async function validAssistant(id) {
     return false;
   }
 
-  if (r.hasOwnProperty('name') && r.name == "BIDARAv"+assistant.BIDARA_VERSION) {
+  if (r.hasOwnProperty('name') && r.name == assistant.ASSISTANT_NAME+"v"+assistant.ASSISTANT_VERSION) {
     return true;
   }
   return false;
@@ -36,9 +36,7 @@ export async function updateAssistant(id) {
   if(!openaiKey) {
     throw new Error('openai key not set. cannot update assistant.');
   }
-  console.log(id);
-  console.log(openaiKey);
-  console.log(assistant.ASSISTANT_CONFIG);
+
   const response = await fetch("https://api.openai.com/v1/assistants/"+id, {
     method: "POST",
     headers: {
@@ -56,9 +54,9 @@ export async function updateAssistant(id) {
   return null;
 }
 
-export async function getBidaraAssistant() {
+export async function getAssistant() {
   if(!openaiKey) {
-    throw new Error('openai key not set. cannot search for bidara assistant.');
+    throw new Error('openai key not set. cannot search for assistant.');
   }
   // get assistants
   const response = await fetch("https://api.openai.com/v1/assistants?limit=50", {
@@ -74,20 +72,22 @@ export async function getBidaraAssistant() {
   const r = await response.json();
 
   if (r.hasOwnProperty('data')) {
-    // find assistant with name == BIDARAvX.X
+    // find assistant with name == ASSISTANT_NAMEvX.X
     
-    let bidaraAsst = r.data.find(item => /^BIDARAv[0-9]+\.[0-9]+$/.test(item.name));
-    if(bidaraAsst && bidaraAsst.hasOwnProperty('id')) {
+    const assistantRegex = new RegExp(`^${assistant.ASSISTANT_NAME}v[0-9]+\.[0-9]+$`)
+
+    let asst = r.data.find(item => assistantRegex.test(item.name));
+    if(asst && asst.hasOwnProperty('id')) {
       // get version of assistant.
-      let bidaraVersion = bidaraAsst.name.substring(7);
+      let asstVersion = asst.name.substring(7);
       // if assistant version is up to date, use it.
-      if (bidaraVersion == assistant.BIDARA_VERSION) {
-        return bidaraAsst.id;
+      if (asstVersion == assistant.ASSISTANT_VERSION) {
+        return asst.id;
       }
       else {
       // otherwise update it.
-        bidaraAsst.id = await updateAssistant(bidaraAsst.id);
-        return bidaraAsst.id;
+        asst.id = await updateAssistant(asst.id);
+        return asst.id;
       }
     }
   }
@@ -161,7 +161,7 @@ export async function getAsst() {
   }
   
   if(!isValidAsstId) {
-    openaiAsst = getBidaraAssistant(); // returns asst_id or null.
+    openaiAsst = getAssistant(); // returns asst_id or null.
   }
 
   return openaiAsst;

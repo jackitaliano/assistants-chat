@@ -108,7 +108,6 @@
   }
 
   async function updateThread(thread) {
-    console.log("update threads");
     updateThreadAndThreads(thread, threads);
   }
 </script>
