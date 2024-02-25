@@ -1,0 +1,12 @@
+/node_modules/
+/secrets.txt
+/public/build/
+/vite/
+
+# Editor directories and files
+.DS_Store
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/tasks.json
+.conda
