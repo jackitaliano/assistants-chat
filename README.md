@@ -1,6 +1,6 @@
 # assistants-chat
 ## What it is
-Chat with your assistants, save their history, multiple chats.
+Chat with your assistants, save their history, multiple chats. Run 100% in the browser.
 
 ## How to use
 1. Load your own OpenAI Assistant's config into `src/components/assistant/assistant.js` (and if needed adjust `assistantFunctions.js`)
