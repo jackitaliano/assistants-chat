@@ -16,7 +16,9 @@ Chat with your assistants, save their history, multiple chats. Run 100% in the b
 
 ## Credit
 - Heavily depends on [ovidijusparsiunas/deep-chat](https://github.com/ovidijusparsiunas/deep-chat)
-- Much of development done on/by [nasa-petal/bidara-deep-chat](https://github.com/nasa-petal/bidara-deep-chat)
+- This is essentially a fork of: [nasa-petal/bidara-deep-chat](https://github.com/nasa-petal/bidara-deep-chat)
+  - Most of development done on/by `nasa-petal/bidara-deep-chat`, which includes myself
+  - This repo is a refactor and generalization of bidara-deep-chat, so I can use it's ideas in other projects
   - [Try Bidara](https://nasa-petal.github.io/bidara-deep-chat/)
 
 ## Screenshots
